@@ -1,0 +1,37 @@
+<header class="bg-white shadow-md p-4 relative " (mouseleave)="closeDropdown()">
+  <div class="container mx-auto flex justify-between items-center">
+    <span routerLink="/" class="text-3xl cursor-pointer font-bold text-red-500 hover:text-red-600">Logo</span>
+    <app-location-finder *ngIf="displayContent('/listing-of-houses') ||displayContent('/favorite')" />
+    <div class="relative inline-block text-left" (click)="toggleDropdown()">
+
+      <button class="inline-flex items-center gap-2 justify-center w-full rounded-full shadow-md px-3 py-2 bg-white text-sm
+        cursor-pointer text-gray-700 hover:bg-gray-400/[0.2]">
+        <div *ngIf="loggedIn" class="flex gap-2 items-center">
+          <i class="fa-solid fa-user text-xl"></i>
+          <p class="font-semibold">{{username}}</p>
+        </div>
+        <div *ngIf="!loggedIn" class="flex gap-2 items-center">
+          <i class="fa-solid fa-user text-xl"></i>
+          <p class="font-semibold">Entrar</p>
+        </div>
+      </button>
+      <div *ngIf="dropdownOpen" class="flex flex-col absolute right-0 mt-2 w-56 rounded-md shadow-lg  bg-white z-10"
+        role="menu" tabindex="-1">
+        <a routerLink="/login" *ngIf="!loggedIn"
+          class="text-gray-800 font-semibold cursor-pointer p-2 h-full hover:text-red-500 hover:bg-gray-400/[0.2]"
+          role="menuitem" tabindex="-1">Login</a>
+        <a routerLink="/register" *ngIf="!loggedIn"
+          class="text-gray-800 font-semibold cursor-pointer p-2 hover:text-red-500 hover:bg-gray-400/[0.2]"
+          role="menuitem" tabindex="-1">Criar Conta</a>
+        <a routerLink="/favorite" *ngIf="loggedIn"
+          class="text-gray-800 font-semibold cursor-pointer p-2 hover:text-red-500 hover:bg-gray-400/[0.2]"
+          role="menuitem" tabindex="-1">Favoritos</a>
+        <a href="#" class="text-gray-800 font-semibold cursor-pointer p-2 hover:text-red-500 hover:bg-gray-400/[0.2]"
+          role="menuitem" *ngIf="loggedIn" tabindex="-1">Minhas Reservas</a>
+        <p *ngIf="loggedIn" (click)="logout()"
+          class="text-gray-800 font-semibold cursor-pointer p-2 hover:text-red-500 hover:bg-gray-400/[0.2]"
+          role="menuitem" tabindex="-1">Sair</p>
+      </div>
+    </div>
+  </div>
+</header>

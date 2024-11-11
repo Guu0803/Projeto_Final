@@ -1,0 +1,49 @@
+<div class="h-80 box-border bg-white  text-white/[0.8] cursor-pointer hover:bg-gray-400/[0.2] ease-in-out duration-200">
+  <div class="relative flex items-center justify-center  overflow-hidden text-xl">
+    <span *ngIf=house.badges
+      class=" bg-gray-700/[0.7] text-sm text-white font-semibold px-2 py-1 rounded-lg absolute top-2 left-2">
+      Superhost
+    </span>
+    <div (click)="toggleFavorite()" class="absolute top-2 right-2  cursor-pointer">
+      <div *ngIf="!displayContent('/favorite')">
+        <i *ngIf="!favorite " (click)="addFavorite(house.id)"
+          class="fa-regular fa-heart text-white   hover:text-red-500 "></i>
+        <i *ngIf="favorite" (click)="unfavorite(house.id)" class="fa-solid fa-heart text-red-500"></i>
+      </div>
+      <i *ngIf="displayContent('/favorite')" class="fa-solid fa-trash"></i>
+    </div>
+    <button (click)="prevImage()" class="absolute left-2">
+      <i class="fa-solid fa-chevron-left cursor-pointer hover:text-white"></i>
+    </button>
+    <button (click)="nextImage()" class="absolute right-2">
+      <i class="fa-solid fa-chevron-right cursor-pointer hover:text-white"></i>
+    </button>
+    <img *ngFor="let img of house.images; let i = index" src="{{img}}" alt="Imagem do Apartamento"
+      [class]=" i === currentIndex ? 'block' : 'hidden'"
+      class="object-cover w-full h-48 transition-opacity ease-in-out duration-500">
+    <div class="flex gap-0.5 absolute bottom-2  text-[1.5vh]">
+      <span *ngFor="let image of images; let i = index" (click)="goToIndex(i)"
+        [class]="i === currentIndex ? 'text-white text-xs' : 'text-gray-400'"
+        class="w-[2vh] h-[2vh] flex items-center justify-center rounded-full cursor-pointer transition-colors  hover:text-white duration-300">
+        <i class="fa-solid fa-circle"></i>
+      </span>
+    </div>
+  </div>
+  <section class="p-2 " (click)="toDetails(house.id)">
+    <div class="flex items-center justify-between ">
+      <h3 class="text-gray-800 font-semibold overflow-hidden whitespace-nowrap text-ellipsis">
+        {{house.title}}
+      </h3>
+      <div class="flex items-center  text-sm text-gray-600">
+        <i class="fa-solid fa-star"></i>
+        <span>{{house.rating}}</span>
+        <span class="ml-1">({{house.reviews}})</span>
+      </div>
+    </div>
+    <div class=" flex h-20 flex-col justify-between ">
+      <p class="text-gray-600 text-sm ">{{house.subTitle}}</p>
+      <p class="text-gray-800 font-semibold flex items-end ">{{house.originalPricePerNight}} noite
+      </p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,44 @@
+<div class="relative w-full bg-white rounded-lg  shadow-lg overflow-hidden p-10">
+
+  <div class="absolute inset-0 ">
+    <img src="https://letsimage.s3.amazonaws.com/letsbook/296/quartos/34/fotoprincipal.jpg" alt="Quarto"
+      class="w-full h-full object-cover opacity-80">
+  </div>
+
+  <div class="relative flex items-center p-4 md:p-10 lg:w-[40vw]  bg-white bg-opacity-90 rounded-lg shadow-md z-4">
+    <div class="w-full">
+      <div class="text-left mb-6">
+        <h1 class="text-2xl font-semibold text-gray-800">Aluguéis por temporada em Brasil</h1>
+        <p class="text-gray-600">Encontre e reserve lugares incríveis e aconchegantes</p>
+      </div>
+      <form class="space-y-4" [formGroup]="locationForm" (ngSubmit)="searchOnSubmit()">
+        <div>
+          <label class="text-gray-600 text-sm">Localização</label>
+          <input type="text" placeholder="Brasil" formControlName="location"
+            class="w-full p-3 mt-1 border rounded-lg focus:outline-none focus:ring focus:ring-red-500" />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-gray-600 text-sm">Check-in</label>
+            <input type="date" placeholder="Adicionar data" formControlName="checkIn"
+              class="w-full p-3 mt-1 border rounded-lg focus:outline-none focus:ring focus:ring-red-500" />
+          </div>
+          <div>
+            <label class="text-gray-600 text-sm">Checkout</label>
+            <input type="date" placeholder="Adicionar data" formControlName="checkOut"
+              class="w-full p-3 mt-1 border rounded-lg focus:outline-none focus:ring focus:ring-red-500" />
+          </div>
+        </div>
+
+        <button type="submit"
+          class="w-full py-3 bg-red-500 text-white font-semibold rounded-lg shadow hover:bg-red-600 focus:outline-none">
+          <svg class="inline w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10 2a8 8 0 015.293 13.708l4.707 4.707-1.414 1.414-4.707-4.707A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z" />
+          </svg>
+          Buscar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

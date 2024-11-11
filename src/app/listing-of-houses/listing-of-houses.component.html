@@ -1,0 +1,5 @@
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 border-box p-4">
+  <div *ngFor="let house of listOfHouses" class="w-auto rounded-lg shadow-md overflow-hidden">
+    <app-card [house]="house" />
+  </div>
+</div>

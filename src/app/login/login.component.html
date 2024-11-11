@@ -1,0 +1,25 @@
+<div class="bg-white p-6 rounded-lg shadow-md w-96  mx-auto">
+  <h2 class="text-center text-gray-800 text-xl font-semibold mb-4">Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin($event)">
+    <label for="email" class="block text-gray-600 text-sm">Email</label>
+    <input type="email" id="email" placeholder="Digite seu email" formControlName="email"
+      class="mt-1 p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-1 focus:ring-red-500">
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <small *ngIf="loginForm.get('email')?.hasError('required')">O email é obrigatório</small>
+      <small *ngIf="loginForm.get('email')?.hasError('email')">Insira um email válido</small>
+    </div>
+
+
+    <label for="password" class="block text-gray-600 text-sm mt-4">Senha</label>
+    <input type="password" id="password" placeholder="Digite sua senha" formControlName="password"
+      class="mt-1 p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-1 focus:ring-red-500">
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <small *ngIf="loginForm.get('password')?.hasError('required')">A senha é obrigatória</small>
+      <small *ngIf="loginForm.get('password')?.hasError('minlength')">A senha deve ter no mínimo 8 caracteres</small>
+    </div>
+    <button type="submit"
+      class="mt-6 w-full bg-red-500 text-white font-bold py-2 rounded hover:bg-red-600 transition duration-200">Login</button>
+  </form>
+  <p class="text-center text-gray-600 text-sm mt-4">Não tem uma conta? <a routerLink="/register"
+      class="text-red-500 cursor-pointer hover:underline">Crie uma conta</a></p>
+</div>
